@@ -82,7 +82,7 @@ function changeMathPositiveNegativeNumber() {
 
 function operate() {
     for(let i=0; i < userEntryResult.value.length; i++) {
-        if(mathOp.includes(userEntryResult.value[i])) {
+        if(mathOp.includes(userEntryResult.value[i]) && i !=0) {
             switch(userEntryResult.value[i]) {
                 case "+":
                     let sum = userEntryResult.value.slice(0,i)*1 + 
@@ -106,9 +106,7 @@ function operate() {
                     break;        
             }
         }
-        if(userEntryResult.value[0]=== "-") {
 
-        }
     }
     restartUserInput = true;
 }

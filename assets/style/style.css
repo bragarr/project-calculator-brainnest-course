@@ -1,0 +1,92 @@
+:root {
+    --background-color: #1D232A;
+    --white-standard: #f7ebeb;
+    --background-calc: #181921;
+    --button-color: #242427;
+    --button-color-on: #3B3B3B;
+    --blue-button:#41ADD8;
+    --blue-button-on:#41add886;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'arial', sans-serif;
+    text-align: center;
+}
+
+.app__header {
+    color: var(--white-standard);
+    text-align: center;
+    
+}
+
+.calculator__app {
+    display: inline-block;
+}
+
+.calculator__body {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    justify-content: center;
+    border: 2px solid var(--background-calc);
+    background-color: var(--background-calc);
+    border-radius: 5px;
+}
+
+.result, .user__entry {
+    grid-column: span 4;
+    font-size: 40px;
+    padding: 10px 5px;
+    border: none;
+    text-align: right;
+    background-color: var(--background-calc);
+    color: var(--white-standard);
+}
+
+.result {
+    font-size: 30px;
+}
+
+.result, .user__entry:focus {
+    box-shadow: 0;
+    outline: 0;
+}
+
+.result {
+    border-radius: 5px 5px 0 0;
+}
+
+.user__entry {
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 10px;
+}
+
+.calc__buttons, .command__button {
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    cursor: pointer;
+    background-color: var(--button-color);
+    color: var(--white-standard);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 25px 0;
+    border: 2px solid var(--background-calc);
+    border-radius: 5px;
+}
+
+.calc__buttons:hover, .command__button:hover {
+    background-color: var(--button-color-on);
+}
+
+.double__button {
+    grid-column: span 2;
+}
+
+.result__button {
+    background-color: var(--blue-button);
+}
+
+.result__button:hover {
+    background-color: var(--blue-button-on);
+}

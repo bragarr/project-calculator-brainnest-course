@@ -31,34 +31,25 @@ body {
     border: 2px solid var(--background-calc);
     background-color: var(--background-calc);
     border-radius: 5px;
+    user-select: none;
 }
 
-.result, .user__entry {
+.user__entry {
     grid-column: span 4;
-    font-size: 40px;
+    font-size: 35px;
     padding: 10px 5px;
     border: none;
     text-align: right;
     background-color: var(--background-calc);
     color: var(--white-standard);
+    border-radius: 0 0 5px 5px;
+    margin: 20px 0;
+    pointer-events: none;
 }
 
-.result {
-    font-size: 30px;
-}
-
-.result, .user__entry:focus {
+.user__entry:focus {
     box-shadow: 0;
     outline: 0;
-}
-
-.result {
-    border-radius: 5px 5px 0 0;
-}
-
-.user__entry {
-    border-radius: 0 0 5px 5px;
-    margin-bottom: 10px;
 }
 
 .calc__buttons, .command__button {
@@ -89,4 +80,8 @@ body {
 
 .result__button:hover {
     background-color: var(--blue-button-on);
+}
+
+::placeholder {
+    color: var(--white-standard);
 }

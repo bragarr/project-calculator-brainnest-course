@@ -36,7 +36,7 @@ body {
 
 .user__entry {
     grid-column: span 4;
-    font-size: 35px;
+    font-size: 30px;
     padding: 10px 5px;
     border: none;
     text-align: right;
@@ -84,4 +84,13 @@ body {
 
 ::placeholder {
     color: var(--white-standard);
+}
+
+.span {
+    position: absolute;
+    bottom: 0;
+}
+
+.buzz {
+    width: 240px;
 }

@@ -1,3 +1,4 @@
+// Variables
 let buttonOperation = document.querySelectorAll(".calc__buttons");
 let allClear = document.querySelector(".all__clear");
 let deleteButton = document.querySelector(".delete__button");
@@ -5,17 +6,17 @@ let resultButton = document.querySelector(".result__button");
 let userEntryResult = document.querySelector(".user__entry");
 let changeMath = document.querySelector(".change__math");
 let restartUserInput = false;
-let alreadyChoseOperation = false;
+let alreadyChosenOperation = false;
 let dot = false;
 let opCount = 0;
 let dotcount = 0;
-const mathOp = ["+","-","/","*"]
-
+const mathOp = ["+","-","/","*"];
+let buzz = document.querySelector("span");
 // buttonOperation Listener to turn on buttons
 buttonOperation.forEach(button => {
     button.addEventListener("click", () => {
         let buttonSelectedByUser = button.dataset.value;
-        for(let i=0; i < userEntryResult.value.length; i++) {
+        for(let i=0; i < userEntryResult.value.length; i++) {  //Loop and conditions to not repeat dot on operations
             if(mathOp.includes(userEntryResult.value[i])) {
                 opCount += 1;
                 dotcount +=1;
@@ -29,7 +30,9 @@ buttonOperation.forEach(button => {
         if(dotcount===1 && opCount===0) {
             dot = true;
         }
-        if(dotcount===1 && opCount===1) {
+        if(dotcount === 1 && opCount===1 ||
+            dotcount === 2 && opCount===1
+        ) {
             dot = false;
         }
         if(dotcount > 2 && opCount===1) {
@@ -57,33 +60,52 @@ resultButton.addEventListener("click", () => operate());
 function addUserEntryResultButtonSelected(numberOperation) {
     let lastValueOnUserEntryResult = userEntryResult.value[userEntryResult.value.length-1]
     let beforeLastValue = userEntryResult.value[userEntryResult.value.length-2];
-    if(mathOp.includes(lastValueOnUserEntryResult) && mathOp.includes(numberOperation)
-        || userEntryResult.value === "0" && numberOperation==="0" 
-            || userEntryResult.value==="0" && Number(numberOperation)) { // This condition changes Math symbol each time users press button
-                deleteLastofUserEntryResult();
+    // This condition changes Math symbol each time users press button
+    if(mathOp.includes(lastValueOnUserEntryResult) &&
+        mathOp.includes(numberOperation) || 
+        userEntryResult.value === "0" && numberOperation==="0" ||
+        userEntryResult.value==="0" && 
+        Number(numberOperation)
+    ) {
+        deleteLastofUserEntryResult();
     }
-    if(userEntryResult.value.length===0 && mathOp.includes(numberOperation)) { // Prevent Symbol on start
+    // Prevent Symbol on start
+    if(userEntryResult.value.length===0 && mathOp.includes(numberOperation)) {
         return;
     }
-    if(restartUserInput && Number(numberOperation)) {  //After complete a operation, if user select a new number, a new operation starts
+    //After complete a operation, if user select a new number, a new operation starts
+    if(restartUserInput && Number(numberOperation)) {  
         reloadCalculator();
         restartUserInput = false;
     }
-    if(mathOp.includes(numberOperation)) {  //Changes boolean for condition to run opration due Math Symbol
-        alreadyChoseOperation = true;
+    //Changes boolean for condition to run opration due Math Symbol
+    if(mathOp.includes(numberOperation)) {
+        alreadyChosenOperation = true;
     }
-    if(alreadyChoseOperation && mathOp.includes(numberOperation)) { //if user selects a second math symbol, the first operation on screen runs
+    //if user selects a second math symbol, the first operation on screen runs
+    if(alreadyChosenOperation && mathOp.includes(numberOperation)) {
         operate();
-        alreadyChoseOperation = false;
+        alreadyChosenOperation = false;
     }
-    if(mathOp.includes(beforeLastValue) && lastValueOnUserEntryResult === "0" && numberOperation === "0"
-        || mathOp.includes(beforeLastValue) && lastValueOnUserEntryResult === "0" && Number(numberOperation)) { // prevents user to include multiple zeros on second number
-            deleteLastofUserEntryResult();
+    // prevents user to include multiple zeros on second number
+    if(mathOp.includes(beforeLastValue) && 
+        lastValueOnUserEntryResult === "0" &&
+        numberOperation === "0" ||
+        mathOp.includes(beforeLastValue) && 
+        lastValueOnUserEntryResult === "0" && 
+        Number(numberOperation)
+    ) {
+        deleteLastofUserEntryResult();
     }
+    // if user select dot at the beggining calculator screen will display "0."
     if(userEntryResult.value==="" && numberOperation===".") {
         userEntryResult.value = "0";
     }
-    if(dot && numberOperation==="."|| mathOp.includes(lastValueOnUserEntryResult) && numberOperation===".") {
+    // prevents user to input multiples dot
+    if(dot && numberOperation==="." ||
+        mathOp.includes(lastValueOnUserEntryResult) &&
+        numberOperation==="."
+    ) {
         return;
     }
     userEntryResult.value += numberOperation;
@@ -103,44 +125,47 @@ function deleteLastofUserEntryResult() {
 function changeMathPositiveNegativeNumber() {
     if(Number(userEntryResult.value)) {
         userEntryResult.value = userEntryResult.value*(-1);
+        opCount = 0;
+        dotcount =0;
     }
 }
 
 // this function operates calculator due user choices on screeen
 function operate() {
     for(let i=0; i < userEntryResult.value.length; i++) {
-        if(mathOp.includes(userEntryResult.value[i]) && i !=0) {
+        let number1 = userEntryResult.value.slice(0,i)*1;
+        let number2 = userEntryResult.value.slice(i+1,userEntryResult.value.length)*1;
+        if(mathOp.includes(userEntryResult.value[i]) && i!=0) {
             switch(userEntryResult.value[i]) {
                 case "+":
-                    let sum = userEntryResult.value.slice(0,i)*1 + 
-                    userEntryResult.value.slice(i+1, userEntryResult.value.length)*1
+                    let sum = number1 + number2; 
                     userEntryResult.value = sum;
                     break;
                 case "-":
-                    let minus = userEntryResult.value.slice(0,i)*1 - 
-                    userEntryResult.value.slice(i+1, userEntryResult.value.length)*1
+                    let minus = number1 - number2;
                     userEntryResult.value = minus;
                     break;
                 case "/":
-                    let div = userEntryResult.value.slice(0,i)*1 / 
-                    userEntryResult.value.slice(i+1, userEntryResult.value.length)*1
+                    let div = number1 / number2;
                     userEntryResult.value = div;
                     break;    
                 case "*":
-                    let times = userEntryResult.value.slice(0,i)*1 * 
-                    userEntryResult.value.slice(i+1, userEntryResult.value.length)*1
+                    let times = number1 * number2;
                     userEntryResult.value = times;
-                    break;        
+                    break;
             }
         }
+        if(userEntryResult.value*1 === Infinity) {
+            userEntryResult.value = "To infinity, and beyond😉";
+        }
     }
+    toFixLongNumbers();
     restartUserInput = true;
     dot = false;
-    contador = 0;
-    console.log(dot);
 }
 
-window.addEventListener('keydown', (e) => {
+// Command to turn on keyboard for calculator
+window.addEventListener('keydown', (e) => { 
     if(
         e.key === '0' ||
         e.key === '1' ||
@@ -183,6 +208,7 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+// Keyboard functions
 function clickButton(key) {
     buttonOperation.forEach(button => {
         if(button.dataset.value === key) {
@@ -201,4 +227,13 @@ function clickDel() {
 
 function clickAllClear() {
     allClear.click();
+}
+
+function toFixLongNumbers() {
+    if(userEntryResult.value.length > 12 && Number(userEntryResult.value*1)) {
+        longNumber = userEntryResult.value*1;
+        userEntryResult.value = userEntryResult.value.slice(0,12)
+    } else {
+        userEntryResult === userEntryResult;
+    }
 }

@@ -41,6 +41,7 @@ buttonOperation.forEach(button => {
         addUserEntryResultButtonSelected(buttonSelectedByUser);
         opCount = 0;
         dotcount =0;
+        calculatorLimit();
     })
 })
 
@@ -101,7 +102,7 @@ function addUserEntryResultButtonSelected(numberOperation) {
     if(userEntryResult.value==="" && numberOperation===".") {
         userEntryResult.value = "0";
     }
-    // prevents user to input multiples dot
+    // prevents user to input multiples dot or a dot after a math operation
     if(dot && numberOperation==="." ||
         mathOp.includes(lastValueOnUserEntryResult) &&
         numberOperation==="."
@@ -155,7 +156,9 @@ function operate() {
                     break;
             }
         }
-        if(userEntryResult.value*1 === Infinity) {
+        if(userEntryResult.value*1 === Infinity ||
+            userEntryResult.value*1 === -Infinity
+        ) {
             userEntryResult.value = "To infinity, and beyond😉";
         }
     }
@@ -229,11 +232,18 @@ function clickAllClear() {
     allClear.click();
 }
 
+// Function to fix limit result and inputs
 function toFixLongNumbers() {
     if(userEntryResult.value.length > 12 && Number(userEntryResult.value*1)) {
         longNumber = userEntryResult.value*1;
         userEntryResult.value = userEntryResult.value.slice(0,12)
     } else {
         userEntryResult === userEntryResult;
+    }
+}
+
+function calculatorLimit() {
+    if(userEntryResult.value.length > 25) {
+        deleteLastofUserEntryResult();
     }
 }

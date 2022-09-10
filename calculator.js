@@ -19,9 +19,10 @@ buttonOperation.forEach(button => {
         for(let i=0; i < userEntryResult.value.length; i++) {  //Loop and conditions to not repeat dot on operations
             if(mathOp.includes(userEntryResult.value[i])) {
                 opCount += 1;
-                dotcount +=1;
             } else if(userEntryResult.value[i]===".") {
                 dotcount += 1;
+            } else if(userEntryResult.value[i]==="." && buttonSelectedByUser===".") {
+                dotcount +=1;
             }
         }
         if(dotcount===0 && opCount===0) {
@@ -35,9 +36,11 @@ buttonOperation.forEach(button => {
         ) {
             dot = false;
         }
-        if(dotcount > 2 && opCount===1) {
+        if(dotcount >= 2 && opCount===1) {
             dot = true;
         }
+        console.log(dotcount);
+        console.log(opCount);
         addUserEntryResultButtonSelected(buttonSelectedByUser);
         opCount = 0;
         dotcount =0;
@@ -105,6 +108,8 @@ function addUserEntryResultButtonSelected(numberOperation) {
     // prevents user to input multiples dot or a dot after a math operation
     if(dot && numberOperation==="." ||
         mathOp.includes(lastValueOnUserEntryResult) &&
+        numberOperation==="." ||
+        lastValueOnUserEntryResult==="." &&
         numberOperation==="."
     ) {
         return;

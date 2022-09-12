@@ -11,7 +11,6 @@ let dot = false;
 let opCount = 0;
 let dotcount = 0;
 const mathOp = ["+","-","/","*"];
-let buzz = document.querySelector("span");
 // buttonOperation Listener to turn on buttons
 buttonOperation.forEach(button => {
     button.addEventListener("click", () => {
@@ -22,7 +21,7 @@ buttonOperation.forEach(button => {
             } else if(userEntryResult.value[i]===".") {
                 dotcount += 1;
             } else if(userEntryResult.value[i]==="." && buttonSelectedByUser===".") {
-                dotcount +=1;
+                dotcount +=2;
             }
         }
         if(dotcount===0 && opCount===0) {
@@ -39,8 +38,6 @@ buttonOperation.forEach(button => {
         if(dotcount >= 2 && opCount===1) {
             dot = true;
         }
-        console.log(dotcount);
-        console.log(opCount);
         addUserEntryResultButtonSelected(buttonSelectedByUser);
         opCount = 0;
         dotcount =0;
@@ -173,7 +170,7 @@ function operate() {
 }
 
 // Command to turn on keyboard for calculator
-window.addEventListener('keydown', (e) => { 
+window.addEventListener('keydown', (e455) => { 
     if(
         e.key === '0' ||
         e.key === '1' ||

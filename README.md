@@ -1,4 +1,4 @@
-# project-calculator
+# project-calculator v2.0
 
 This is a project about a calculator App that works with the keyboard as well.
 
@@ -21,6 +21,6 @@ Having the last informations in mind, I created a full logics to the operation o
 
 As a plus for this challenge, I also could add to this project the functionality about using the keyboard to operates the calculator.
 
-This challange and project was my final assignment on Fron End Developer Program on Brannest Company.
+This challange and project was my final assignment on Front End Developer Program on Brainnest Company.
 
 It really helped me on my coding and I hope you enjoy testing my project.

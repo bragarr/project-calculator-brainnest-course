@@ -170,7 +170,7 @@ function operate() {
 }
 
 // Command to turn on keyboard for calculator
-window.addEventListener('keydown', (e455) => { 
+window.addEventListener('keydown', (e) => { 
     if(
         e.key === '0' ||
         e.key === '1' ||

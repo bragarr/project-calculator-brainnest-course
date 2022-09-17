@@ -1,4 +1,4 @@
-// Variables
+// Variables // 
 let buttonOperation = document.querySelectorAll(".calc__buttons");
 let allClear = document.querySelector(".all__clear");
 let deleteButton = document.querySelector(".delete__button");

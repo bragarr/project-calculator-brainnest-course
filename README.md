@@ -4,7 +4,7 @@ This is a project about a calculator App that works with the keyboard as well.
 
 You can check it out on bellow link
 
-https://bragarr.github.io/project-calculator-brainnest-course/
+https://bragarr.github.io/project-calculator-v2.0/
 
 ![image](https://user-images.githubusercontent.com/108424896/190833280-40e94122-78a8-4c0c-b488-06d8a7c6217b.png)
 

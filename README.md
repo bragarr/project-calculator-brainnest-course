@@ -1,12 +1,14 @@
-# project-calculator
+# project-calculator v2.0
 
 This is a project about a calculator App that works with the keyboard as well.
 
 You can check it out on bellow link
 
-https://bragarr.github.io/project-calculator-brainnest-course/
+https://bragarr.github.io/project-calculator-v2.0/
 
 ![image](https://user-images.githubusercontent.com/108424896/190833280-40e94122-78a8-4c0c-b488-06d8a7c6217b.png)
+
+https://user-images.githubusercontent.com/108424896/190833986-f33d3c46-c394-4a71-bcce-96ee2c027a16.mp4
 
 Project Objective
 
@@ -19,6 +21,7 @@ Having the last informations in mind, I created a full logics to the operation o
 
 As a plus for this challenge, I also could add to this project the functionality about using the keyboard to operates the calculator.
 
-This challange and project was my final assignment on Fron End Developer Program on Brannest Company.
+This challange and project was my final assignment on Front End Developer Program on Brainnest Company.
+
 
 It really helped me on my coding and I hope you enjoy testing my project.

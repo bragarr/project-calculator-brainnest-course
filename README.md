@@ -23,4 +23,5 @@ As a plus for this challenge, I also could add to this project the functionality
 
 This challange and project was my final assignment on Front End Developer Program on Brainnest Company.
 
+
 It really helped me on my coding and I hope you enjoy testing my project.

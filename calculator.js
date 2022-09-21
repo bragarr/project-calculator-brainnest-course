@@ -249,3 +249,5 @@ function calculatorLimit() {
         deleteLastofUserEntryResult();
     }
 }
+
+console.log("teste");
